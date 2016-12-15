@@ -10,4 +10,8 @@ public class LevelManager : MonoBehaviour {
 	public void QuitRequested() {
 		Application.Quit();
 	}
+	
+	public void LoadNextLevel() {
+		Application.LoadLevel(Application.loadedLevel + 1);
+	}
 }
