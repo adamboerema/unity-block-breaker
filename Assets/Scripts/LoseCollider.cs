@@ -7,6 +7,6 @@ public class LoseCollider : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D trigger) {
 		levelManager = GameObject.FindObjectOfType<LevelManager>();
-		levelManager.LoadLevel("Win");
+		levelManager.LoadLevel("Lose");
 	}
 }
