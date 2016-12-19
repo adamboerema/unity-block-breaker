@@ -6,9 +6,11 @@ public class Brick : MonoBehaviour {
 	public Sprite[] hitSprites;
 	public AudioClip crack;
 	public static int breakableCount = 0;
+	public GameObject smoke;
 	private int timesHit = 0;
 	private LevelManager levelManager;
 	private bool isBreakable;
+
 	
 	
 	// Use this for initialization
@@ -45,10 +47,17 @@ public class Brick : MonoBehaviour {
 		}
 	}
 	
+	void PuffSmoke() {
+		GameObject smokePuff = (GameObject) Instantiate (smoke, transform.position, Quaternion.identity);
+		smokePuff.particleSystem.startColor = GetComponent<SpriteRenderer>().color;
+	}
+	
 	void LoadSprites () {
 		int spriteIndex = timesHit - 1;
-		if(hitSprites[spriteIndex]) {
+		if(hitSprites[spriteIndex] != null) {
 			GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+		} else {
+			Debug.LogError("Missing sprite for index");
 		}
 	}
 
